@@ -1,0 +1,2 @@
+.equ TEST 0x10
+MOV $TEST, %a

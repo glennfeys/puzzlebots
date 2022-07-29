@@ -1,0 +1,22 @@
+//square: Beweeg in een vierkant van 3 stappen groot. Doe dit 2 keer en stop dan.
+start:
+PUSH $8
+PUSH $4
+loop:
+DEC (%sp)
+JZ $turn_left
+forward:
+MOV $DECISION_FORWARD, ($IO_DECISION_START)
+MOVB $1, ($IO_DECISION_START)
+JMP $loop
+turn_left:
+MOV $4, (%sp)
+MOV $DECISION_TURN_LEFT, ($IO_DECISION_START)
+MOVB $1, ($IO_DECISION_START)
+DEC 2(%sp)
+JZ $end
+JMP $loop
+end:
+MOV $DECISION_IDLE, ($IO_DECISION_START)
+MOVB $1, ($IO_DECISION_START)
+JMP $end

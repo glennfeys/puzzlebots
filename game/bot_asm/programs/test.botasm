@@ -1,0 +1,4 @@
+//test file
+forward:
+MOV $69, %a
+JMP $forward

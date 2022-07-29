@@ -1,0 +1,45 @@
+//wallbump: Beweeg vooruit tot een muur, draai 180 graden, en beweeg om opnieuw vooruit tot de muur OF 5 tegels bewogen.
+//          Draai dan om en begin opnieuw. Dit maakt gebruik van de stack en functie calls (zonder cdecl).
+
+init:
+//initialize: load some handy memory locations into registers
+MOV $IO_VISION_START, %e
+ADD $VISION_FRONT, %e
+MOV $IO_DECISION_START, %d
+
+//main program
+main:
+loop:
+//first move forward until a wall is found
+MOV $0xFFFF, %a
+CALL $forward
+//then turn 180
+CALL $turn
+
+//now move forward until a wall, OR 5 turns
+MOV $5, %a
+CALL $forward
+CALL $turn
+
+//keep doing this forever
+JMP $loop
+
+forward:
+continue_forward:
+MOVB $DECISION_FORWARD, 1(%d)
+MOVB $1, (%d)
+//previous memory access (to action count) causes bot to have moved and sensor to update, before continuing program
+MOVB (%e), %c
+TEST %c, $VISION_WALL
+JNZ $break_forward
+DEC %a
+JNZ $continue_forward
+break_forward:
+RET
+
+turn:
+MOVB $DECISION_TURN_LEFT, 1(%d)
+MOVB $DECISION_TURN_LEFT, 2(%d)
+MOVB $2, (%d)
+//previous memory access (to action count) causes bot to have moved and sensor to update, before continuing program
+RET

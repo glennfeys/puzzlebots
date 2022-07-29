@@ -1,0 +1,76 @@
+//fsm.botasm: implementation of the FSM
+
+main:
+// %a ==> current FSM state
+MOV $0, %a
+loop:
+// %b ==> current checked input state
+MOV $0, %b
+
+loop_and_check_inputs:
+// %c ==> memory address at ($MEM_FSM_START + (%a * 1024) + (%b * 128))
+MOV $MEM_FSM_START, %c
+MOV %a, %e
+SHL $7, %e
+ADD %e, %c
+MOV %b, %e
+SHL $4, %e
+ADD %e, %c
+
+//input with action_count == 0 means no more inputs
+CMP 10(%c), $0
+JE $no_state_matches
+
+MOV $IO_VISION_START, %d
+// (%d) == %e == sensor value
+// (%c) is positive mask for current input
+// 4(%c) is negative mask for current input
+//check first 16 bit of positive match (~%e & (%c) must be 0)
+MOV (%d), %e
+NOT %e
+TEST %e, (%c)
+JNZ $next_state
+
+//check next 16 bit for positive match (~%e & (%c) must be 0)
+MOV 2(%d), %e
+NOT %e
+TEST %e, 2(%c)
+JNZ $next_state
+
+//check first 16 bit of negative match (%e & (%c) must be 0)
+MOV (%d), %e
+TEST %e, 4(%c)
+JNZ $next_state
+
+//check next 16 bit for negative match (%e & (%c) must be 0)
+MOV 2(%d), %e
+TEST %e, 6(%c)
+JNZ $next_state
+
+//all zero, so state matches
+JMP $state_matches
+
+next_state:
+INC %b
+CMP %b, $8
+JE $no_state_matches
+JMP $loop_and_check_inputs
+
+state_matches:
+
+//set new state
+MOV 8(%c), %a
+
+//copy actions
+MOV $IO_DECISION_START, %d
+MOVB 15(%c), 4(%d)
+MOVB 14(%c), 3(%d)
+MOVB 13(%c), 2(%d)
+MOVB 12(%c), 1(%d)
+MOVB 11(%c), (%d)
+
+JMP $loop
+
+no_state_matches:
+fail:
+MOVB ($0), ($0) //causes cpu exception

@@ -1,0 +1,32 @@
+cmake-build-debug
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+.idea
+*.cbp
+glmc_demo
+*.bmp
+\.vs/
+Debug/
+*.vcxproj
+*.filters
+*.sln
+CMakeSettings\.json
+run main part/
+/*.dll
+*.exe
+*~
+
+# sysprog executables
+puzzle_bots_part1
+puzzle_bots_part2
+puzzle_bots_part1_test
+puzzle_bots_part2_test
+puzzle_bots_part1_replay_benchmark
+puzzle_bots_part1_record_benchmark
+
+# sysprog benchmark
+benchmarks/*
+!benchmarks/benchmarks.txt
+!benchmarks/base-benchmark.zip

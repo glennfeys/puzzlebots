@@ -1,0 +1,93 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "sysprog-2018-solution"
+		}
+	],
+	"settings": {
+		"make.jobs": "8",
+		"files.insertFinalNewline": true,
+		"terminal.integrated.shell.windows": "C:\\msys64\\usr\\bin\\bash.exe",
+		"terminal.integrated.shellArgs.windows": [
+			"-i"
+		],
+		"terminal.integrated.env.linux": {
+			"LSAN_OPTIONS": "suppressions=lsan.supp"
+		},
+		"terminal.integrated.env.osx": {
+			"LSAN_OPTIONS": "suppressions=lsan.supp"
+		},
+		"terminal.integrated.env.windows": {
+			"PATH": "/mingw64/bin:/usr/local/bin:/usr/bin:/bin:/c/Windows/System32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0/"
+		},
+		"files.associations": {
+			"xlocale": "c",
+			"vector": "c",
+			"bot_automaton_system.h": "c",
+			"system_enums.h\u0000m_enums.h": "c",
+			"container_system.h": "c",
+			"engine.h": "c",
+			"visibility_system.h": "c",
+			"assemblage.h\u0000emblage.h": "c",
+			"stdlib.h": "c",
+			"fsm.h": "c",
+			"variant": "c",
+			"game.h": "c",
+			"levelloader.h": "c",
+			"sdl.h": "c",
+			"sdl_timer.h": "c",
+			"cctype": "cpp",
+			"cmath": "cpp",
+			"cstdarg": "cpp",
+			"cstddef": "cpp",
+			"cstdio": "cpp",
+			"cstdlib": "cpp",
+			"cstring": "cpp",
+			"ctime": "cpp",
+			"cwchar": "cpp",
+			"array": "cpp",
+			"atomic": "cpp",
+			"strstream": "cpp",
+			"*.tcc": "cpp",
+			"bitset": "cpp",
+			"chrono": "cpp",
+			"complex": "cpp",
+			"cstdint": "cpp",
+			"deque": "cpp",
+			"list": "cpp",
+			"unordered_map": "cpp",
+			"exception": "cpp",
+			"fstream": "cpp",
+			"functional": "cpp",
+			"initializer_list": "cpp",
+			"iosfwd": "cpp",
+			"iostream": "cpp",
+			"istream": "cpp",
+			"limits": "cpp",
+			"memory": "cpp",
+			"new": "cpp",
+			"numeric": "cpp",
+			"optional": "cpp",
+			"ostream": "cpp",
+			"ratio": "cpp",
+			"sstream": "cpp",
+			"stdexcept": "cpp",
+			"streambuf": "cpp",
+			"string_view": "cpp",
+			"system_error": "cpp",
+			"thread": "cpp",
+			"type_traits": "cpp",
+			"tuple": "cpp",
+			"typeindex": "cpp",
+			"typeinfo": "cpp",
+			"utility": "cpp",
+			"algorithm": "cpp",
+			"valarray": "cpp",
+			"cinttypes": "cpp",
+			"clocale": "cpp",
+			"cwctype": "cpp",
+			"botautomaton_c_wrapper.h": "c"
+		}
+	}
+}

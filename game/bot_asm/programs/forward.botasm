@@ -1,0 +1,6 @@
+//forward: Beweeg steeds vooruit
+MOV $IO_DECISION_START, %a
+forward:
+MOVB $DECISION_FORWARD, 1(%a)
+MOVB $1, (%a)
+JMP $forward

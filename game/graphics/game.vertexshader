@@ -1,0 +1,22 @@
+#version 110
+
+// attribute: Input vertex data, different for all executions of this shader.
+attribute vec3 VertexBasePosition_modelspace;
+attribute vec3 VertexNormal_modelspace;
+attribute vec2 VertexTexCoord;
+
+// varying: Output data ; will be interpolated for each fragment.
+varying vec2 VertexTexCoordOut;
+
+// uniform: Values that stay constant for the whole mesh.
+uniform mat4 MVP;
+uniform mat4 PerDrawTransformation_worldspace;
+
+void main(){
+   VertexTexCoordOut = VertexTexCoord;
+
+   vec4 VertexPosition_modelspace = PerDrawTransformation_worldspace * vec4(VertexBasePosition_modelspace,1);
+
+	// Output position of the vertex, in clip space : MVP * position
+	gl_Position =  MVP * VertexPosition_modelspace;
+}

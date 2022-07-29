@@ -1,0 +1,7 @@
+set(NAME glmc)
+
+file(GLOB ROOT_SOURCE *.c)
+file(GLOB ROOT_HEADER ../include/*.h)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+

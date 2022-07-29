@@ -1,0 +1,16 @@
+#version 110
+
+varying vec2 VertexTexCoordOut;
+
+uniform sampler2D Texture;
+
+void main()
+{
+    //texture
+    //vec4 pixColor = texture2D(Texture, VertexTexCoordOut);
+    //if (pixColor.a < 0.1)
+    //    discard;
+    //gl_FragColor = pixColor;
+
+    gl_FragColor = texture2D(Texture, VertexTexCoordOut);
+}
